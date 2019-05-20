@@ -1,0 +1,3 @@
+PRÁTICA 1
+
+Quando o processo que está em "Execução" termina (por exemplo, o processo rosa), ambos os processos ficam no estado "Pronto". O escalonador agora precisa escolher qual processo será executado agora, como o processo rosa já terminou, o processo laranja é escolhido.
