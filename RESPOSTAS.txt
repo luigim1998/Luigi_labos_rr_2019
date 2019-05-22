@@ -1,3 +1,15 @@
 PRÁTICA 1
 
 Quando o processo que está em "Execução" termina (por exemplo, o processo rosa), ambos os processos ficam no estado "Pronto". O escalonador agora precisa escolher qual processo será executado agora, como o processo rosa já terminou, o processo laranja é escolhido.
+
+PRÁTICA 2
+Ocorre starvation porque o processo verde tem uma prioridade maior que o outro fazendo com que ele sempre seja executado.
+Uma ideia seria o escalonador reduzir a prioridade do processo a cada tique do relógio, até que sua prioridade se torne menor que de outro processo e a partir daí executar o processo seguinte. Outra ideia seria definir tempo máximo de execução e após esse tempo ser esgotado, o processos seguinte seria executado.
+
+PRÁTICA 3
+Qual o espaço de endereçamento real máximo de um processo?
+    O tamanho da memória física (memória RAM).
+Qual o espaço de endereçamento real mínimo de um processo?
+    O tamanho do quadro de página, já que é a menor parte da memória física.
+Qual o tamanho da página virtual?
+    Por exemplo, 4 KB, 2 MB e 1 GB na arquitetura x86-64.
