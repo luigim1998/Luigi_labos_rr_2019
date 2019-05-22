@@ -1,6 +1,6 @@
 PRÁTICA 1
 
-Quando o processo que está em "Execução" termina (por exemplo, o processo rosa), ambos os processos ficam no estado "Pronto". O escalonador agora precisa escolher qual processo será executado agora, como o processo rosa já terminou, o processo laranja é escolhido.
+Quando o processo que está em "Execução" termina (por exemplo, o processo rosa), ambos os processos ficam no estado "Pronto". O escalonador agora precisa escolher qual processo será executado agora, como o processo laranja é o próximo na fila de processos, ele é escolhido.
 
 PRÁTICA 2
 Ocorre starvation porque o processo verde tem uma prioridade maior que o outro fazendo com que ele sempre seja executado.
@@ -8,8 +8,15 @@ Uma ideia seria o escalonador reduzir a prioridade do processo a cada tique do r
 
 PRÁTICA 3
 Qual o espaço de endereçamento real máximo de um processo?
-    O tamanho da memória física (memória RAM).
+    Dependendo da arquitetura do processador, por exemplo, na arquitetura x86 o espaço máximo teórico é de 2 elevado a 32 endereços de memória e na arquitetura x64 o espaço máximo teórico é de 2 elevado a 64 endereços de memória sendo que alguns processadores limitam esse endereçamento para 48 bits. 
 Qual o espaço de endereçamento real mínimo de um processo?
-    O tamanho do quadro de página, já que é a menor parte da memória física.
+    O tamanho da página, porque é a menor parte transferida entre a memória física e disco.
 Qual o tamanho da página virtual?
     Por exemplo, 4 KB, 2 MB e 1 GB na arquitetura x86-64.
+
+PRÁTICA 4
+Quais os critérios utilizados pelo simulador para selecionar o processo a ser transferido para o arquivo de paginação (swap out)?
+   Se a página tiver o bit R como 0, ele se torna um candidato para a remoção, se houverem candidatos com esse critério é marcada para remoção o que tiver mais tempo sem ser referenciada. Em casos mais extremos, se todos forem referenciados no momento da escolha(ou seja, tem bit R como 1), é escolhida aleatoriamente uma para remoção.
+
+Quando o processo deve ser transferido novamente para a memória principal (swap in)?
+   Como o simulador está em paginação por demanda, o processo só é chamado para a memória principal quando a CPU detecta a falta das página que esse processo demanda para executar suas instruções, a CPU gera uma interrupção para o sistema operacional carregar as páginas faltantes, após isso a CPU reassume o controle e reinicia a instrução que causou a interrupção.
