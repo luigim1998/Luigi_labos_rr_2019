@@ -20,3 +20,29 @@ Quais os critérios utilizados pelo simulador para selecionar o processo a ser tr
 
 Quando o processo deve ser transferido novamente para a memória principal (swap in)?
    Como o simulador está em paginação por demanda, o processo só é chamado para a memória principal quando a CPU detecta a falta das página que esse processo demanda para executar suas instruções, a CPU gera uma interrupção para o sistema operacional carregar as páginas faltantes, após isso a CPU reassume o controle e reinicia a instrução que causou a interrupção.
+
+Questão 2)
+
+ O algoritmo do banqueiro é usado para alocação de recursos de forma que a ordem de escalonamento seja segura e não ocorra impasses. O algoritmo analisa se a solicitação do processo por um recurso levará o sistema para um estado inseguro, e possivelmente para um estado de impasse. Se ocorrer, a solicitação é negada, caso contrário, é aceita e levada a diante. O algoritmo vem da analogia de um banqueiro que possui uma linha de crédito para os seus clientes, sendo que ele somente oferecerá o crédito se puder oferecer também para as demais pessoas.
+
+
+ Algoritmo do Banqueiro para Múltiplos Recursos
+
+ O algoritmo do banqueiro foi compilado com o gcc versão 6.3.0 do MinGW. O arquivo se encontra na pasta "Algoritmo do banqueiro" e se chama "Algoritmo_Banqueiro_multiplos.cpp".
+
+Questão 3)
+ 
+ O algoritmo do barbeiro é um problema relacionado em sistemas operacionais sobre a comunicação entre processos e regiões críticas. O problema é sobre um barbearia que possui um barbeiro, uma cadeira para o barbeiro e n cadeiras de espera para os clientes. O barbeiro analisa se há clientes nas cadeiras, se não houver, ele dorme. Caso contrário, o cliente o acorda. Se o barbeiro estiver cortando o cabelo de um cliente, ele espera na cadeira, caso não haja, ele vai embora.
+ Uma solução seria usar três semáforos:
+   Um para o cliente que contará o número de clientes presentes;
+   Um semáforo binário para o barbeiro sendo 0 para "dormindo" e 1 para trabalhando;
+   Um para a exclusão mútua que é necessária para o processo executar.
+ Nessa solução é registrado também o número de consumidores que estão esperando na barbearia.
+
+O algoritmo do barbeiro foi compilado com o gcc versão 6.3.0 do MinGW. O arquivo se encontra na pasta "Algoritmo do Barbeiro" e se chama "main.cpp".
+
+Referências:
+
+http://ces33.blogspot.com/2009/05/o-problema-do-barbeiro-dorminhoco-com_07.html
+https://www.geeksforgeeks.org/operating-system-sleeping-barber-problem/
+https://www.geeksforgeeks.org/operating-system-bankers-algorithm/
