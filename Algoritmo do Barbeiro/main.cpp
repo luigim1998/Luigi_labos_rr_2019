@@ -18,7 +18,7 @@ void cut_hair(){
     sleep(3);
 }
 
-void *barber(void *arg) {
+void *barbers(void *arg) {
     
     while(TRUE){
         sem_wait(&client);      // Go to sleep if the number of clients is 0.
@@ -37,17 +37,17 @@ void *clients(void *arg) {
     /*If the amount of waiting customers is less than
     the amount of chairs means there is chairs to sit and wait.*/
     if(waiting < CHAIRS){
-        cout << "Clients arrived to cut hair" << endl;
+        cout << "Client arrived to cut hair" << endl;
         waiting = waiting + 1;
         sem_post(&client);
         sem_post(&mutex);
         sem_wait(&barber);
-        cout << "The clients is having his hair cut" << endl;
+        cout << "The client is having his hair cut" << endl;
     }
     
     else{ // The barber is full and clients will not wait.
         sem_post(&mutex);
-        cout << "The clients gave up (the hall is full)" << endl;
+        cout << "The client gave up (the hall is full)" << endl;
     }
     
     pthread_exit(NULL);
@@ -60,10 +60,10 @@ int main(){
     
     pthread_t b, c;
     
-    pthread_create(&b, NULL, barber, NULL); // Create the thread for barber
+    pthread_create(&b, NULL, barbers, NULL); // Create the thread for barber
     
     while(TRUE){
-        pthread_create(&c, NULL, client, NULL);
+        pthread_create(&c, NULL, clients, NULL);
         sleep(1);
         cout << "Clients waiting in the chairs: " << waiting << endl;
         sleep(1);
